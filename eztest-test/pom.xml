@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ 
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.eztest</groupId>
+  <artifactId>eztest-test</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>EZTest Test</name>
+ 
+  <properties>
+    <jettyVersion>9.3.14.v20161028</jettyVersion>
+  </properties>
+ 
+  <dependencies>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>${jettyVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>net.eztest</groupId>
+	  <artifactId>eztest-core</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+	  <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <systemPropertyVariables>
+            <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
+            <webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
+            <eztest.WEBDRIVER_CLASS>${eztest.WEBDRIVER_CLASS}</eztest.WEBDRIVER_CLASS>
+            <eztest.WEBDRIVER_CAPABILITIES>${eztest.WEBDRIVER_CAPABILITIES}</eztest.WEBDRIVER_CAPABILITIES>
+          </systemPropertyVariables>
+        </configuration>
+        <executions>
+          <execution>
+            <id>integration-test</id>
+            <goals>
+              <goal>integration-test</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>verify</id>
+            <goals>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <!-- This plugin is needed for the servlet example -->
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>${jettyVersion}</version>
+        <configuration>
+          <scanIntervalSeconds>10</scanIntervalSeconds>
+          <stopPort>8005</stopPort>
+          <stopKey>STOP</stopKey>
+        </configuration>
+        <executions>
+          <execution>
+            <id>start-jetty</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>start</goal>
+            </goals>
+            <configuration>
+              <scanIntervalSeconds>0</scanIntervalSeconds>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop-jetty</id>
+            <phase>post-integration-test</phase>
+             <goals>
+               <goal>stop</goal>
+             </goals>
+           </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+	  <profile>
+		<id>chrome</id>
+		<properties>
+			<webdriver.chrome.driver>C:\tools\Selenium\chromedriver.exe</webdriver.chrome.driver>
+			<eztest.WEBDRIVER_CLASS>org.openqa.selenium.chrome.ChromeDriver</eztest.WEBDRIVER_CLASS>	
+			<eztest.WEBDRIVER_CAPABILITIES>version:'',platform:'ANY',browserName:'chrome',javascriptEnabled:true</eztest.WEBDRIVER_CAPABILITIES>	
+		</properties>	
+	  </profile>
+	  <profile>
+		<id>ie</id>
+		<properties>
+			<webdriver.ie.driver>C:\tools\Selenium\IEDriverServer.exe</webdriver.ie.driver>
+			<eztest.WEBDRIVER_CLASS>org.openqa.selenium.ie.InternetExplorerDriver</eztest.WEBDRIVER_CLASS>		
+			<eztest.WEBDRIVER_CAPABILITIES>version:'',platform:'WINDOWS',browserName:'internet explorer',javascriptEnabled:true, ensureCleanSession:true</eztest.WEBDRIVER_CAPABILITIES>	
+		</properties>	
+	  </profile>
+  </profiles>
+</project>

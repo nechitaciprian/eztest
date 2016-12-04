@@ -1,0 +1,1 @@
+mvn clean install -Dnet.eztest.WEBDRIVER_CLASS=org.openqa.selenium.chrome.ChromeDriver -Dnet.eztest.WEBDRIVER_CAPABILITIES=version:'',platform:'ANY',browserName:'chrome',javascriptEnabled:true -Dwebdriver.chrome.driver=C:\tools\Selenium\chromedriver.exe
