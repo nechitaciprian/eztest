@@ -7,7 +7,7 @@ It follows a BDD approach, meaning the testing scripts are very similar to the p
 
 
 ## How is build?
-Java, Cucumber and Selenium
+The source code is in Java using Cucumber and Selenium.
 
 ## Capabilities
 ### Use Case Scripting are easy to create and maintain by Developers or Testers with the following skills: HTML, CSS, XPATH.
