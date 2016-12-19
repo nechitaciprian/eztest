@@ -10,7 +10,8 @@ It follows a BDD approach, meaning the testing scripts are very similar to the p
 Java, Cucumber and Selenium
 
 ## Capabilities
-### Scripts are easy to create and maintain by Developers or Testers
-### Necessary skills to write automation scripts: HTML, CSS, XPATH
-### multiple browser support (as provided by Selenium) 
-### continuous integration and parallel executions with maven and junit
+### Use Case Scripting are easy to create and maintain by Developers or Testers with the following skills: HTML, CSS, XPATH.
+### Test scripts are cross browser. The test scripts can run on diferent browsers using Selenum WebDrriver or Selenium Grid.
+### All the scripts steps include implicit waits so that page loads or partial page relaods does not need to be an explicit step.
+### Multiple runners: Standalone(future), JUnit, TestNG(future), Eclipse Plugin(future)
+### Script Editor: Eclipse Plugin(future)
