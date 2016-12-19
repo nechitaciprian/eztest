@@ -11,7 +11,7 @@ Java, Cucumber and Selenium
 
 ## Capabilities
 ### Use Case Scripting are easy to create and maintain by Developers or Testers with the following skills: HTML, CSS, XPATH.
-### Test scripts are cross browser. The test scripts can run on diferent browsers using Selenum WebDrriver or Selenium Grid.
-### All the scripts steps include implicit waits so that page loads or partial page relaods does not need to be an explicit step.
+### Test scripts are cross browser. The test scripts can run on different browsers using Selenium WebDriver or Selenium Grid.
+### All the scripts steps include implicit waits so that page loads or partial page reloads through AJAX does not need to be an explicit step.
 ### Multiple runners: Standalone(future), JUnit, TestNG(future), Eclipse Plugin(future)
 ### Script Editor: Eclipse Plugin(future)
